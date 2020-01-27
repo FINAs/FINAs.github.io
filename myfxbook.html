@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Market</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        a>b {
+        display: none;
+    }
+
+    a.myfxbookLink {
+        display: none;
+    }
+
+    iframe {
+        border: none;
+    }
+
+    [class*=block],
+    header {
+        margin: 0 auto;
+        text-align: center;
+/*        display: flex;
+        justify-content: center;
+*/    }
+    header{
+        /*display: flex;*/
+    }
+
+    header iframe {
+        display: inline-block;
+        vertical-align: top;
+    }
+    body{
+        max-width: 880px;
+        margin:0 auto;
+    }
+    .block-foundation{
+        display:flex;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+    </header>
+    <div class="block-foundation">
+        <!-- myfxbook.com market widget - Start -->
+        <div>
+            <script class="powered" type="text/javascript" src="https://widgets.myfxbook.com/scripts/fxMarkets.js"></script>
+            <div style="display:none;color: #706f6f;font-weight: bold;font-size: 11px;font-family: Tahoma;">Powered by <a href="https://www.myfxbook.com" class="myfxbookLink"><b style="color: #575454;">Myfxbook.com</b></a></div>
+            <script type="text/javascript">
+            showMarketsWidget()
+            </script>
+        </div>
+        <!-- myfxbook.com market widget - End -->
+        <!-- myfxbook.com top news widget - Start -->
+        <div>
+            <script class="powered" type="text/javascript" src="https://widgets.myfxbook.com/scripts/fxTopNews.js"></script>
+            <div style="display:none;color: #706f6f;font-weight: bold;font-size: 11px;font-family: Tahoma;">Powered by <a href="https://www.myfxbook.com" class="myfxbookLink"><b style="color: #575454;">Myfxbook.com</b></a></div>
+            <script type="text/javascript">
+            showTopNewsWidget()
+            </script>
+        </div>
+        <!-- myfxbook.com top news widget - End -->
+    </div>
+    <div>
+        <!-- myfxbook.com liquidity widget - Start -->
+        <div>
+            <script type="text/javascript" src="https://widgets.myfxbook.com/scripts/fxLiquidity.js"></script>
+            <div style="color: #706f6f;font-weight: bold;font-size: 11px;font-family: Tahoma;">Powered by <a href="https://www.myfxbook.com" class="myfxbookLink"><b style="color: #575454;">Myfxbook.com</b></a></div>
+            <script type="text/javascript">
+            showLiquidityWidget()
+            </script>
+        </div>
+        <!-- myfxbook.com liquidity widget - End -->
+    </div>
+    <div class="block-tech">
+        <!-- myfxbook.com economic calendar widget - Start -->
+        <div>
+            <script class="powered" type="text/javascript" src="https://widgets.myfxbook.com/scripts/fxCalendar.js"></script>
+            <div style="display:none;color: #706f6f;font-weight: bold;font-size: 11px;font-family: Tahoma;">Powered by <a href="https://www.myfxbook.com" class="myfxbookLink"><b style="color: #575454;">Myfxbook.com</b></a></div>
+            <script type="text/javascript">
+            showCalendarWidget()
+            </script>
+        </div>
+        <!-- myfxbook.com economic calendar widget - End -->
+    </div>
+    <div class="block-tech">
+        <!-- myfxbook.com patterns widget - Start -->
+        <div>
+            <script class="powered" type="text/javascript" src="https://widgets.myfxbook.com/scripts/fxPatterns.js?symbols=1,2,3,5&indicators=58,57,56,54,53,52,51,50,49,48,47,46,45,44,43,73,74,71,72,69,70,67,68,65,66,63,64,61,62,59,60,24,23,26,25,20,22,21,39,40,41,42,35,36,37,38,31,32,33,34,27,28,29,30,76,75,78,77,80,79&tType=patterns&timeFrame="></script>
+            <div style="display:none;color: #706f6f;font-weight: bold;font-size: 11px;font-family: Tahoma;">Powered by <a href="https://www.myfxbook.com" class="myfxbookLink"><b style="color: #575454;">Myfxbook.com</b></a></div>
+            <script type="text/javascript">
+            showPatternsWidget()
+            </script>
+        </div>
+        <!-- myfxbook.com patterns widget - End -->
+    </div>
+    <div>
+        <!-- myfxbook.com volatility widget - Start -->
+        <div>
+            <script class="powered" type="text/javascript" src="https://widgets.myfxbook.com/scripts/fxVolatility.js?symbols=1,2,3,5&type=0"></script>
+            <div style="color: #706f6f;font-weight: bold;font-size: 11px;font-family: Tahoma;">Powered by <a href="https://www.myfxbook.com" class="myfxbookLink"><b style="color: #575454;">Myfxbook.com</b></a></div>
+            <script type="text/javascript">
+            showVolatilityWidget()
+            </script>
+        </div>
+        <!-- myfxbook.com volatility widget - End -->
+    </div>
+</body>
+
+</html>
