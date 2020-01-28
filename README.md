@@ -1,2 +1,7 @@
 # FINAs.github.io
-Online library
+
++ [shanghai](./shanghai.html)
++ [multi-chart](./investing.html)
++ [forex](./myfxbook.html)
++ [gold_silver](./gold_silver.html)
+
