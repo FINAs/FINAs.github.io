@@ -1,7 +1,7 @@
 # FINAs.github.io
 
-+ [ShangHai](./shanghai.html)
-+ [Multi-Chart](./multi-chart.html)
++ [ShangHai](./sh.html)
++ [Multi-Chart](./mc.html)
 + [Forex](./myfxbook.html)
 + [Gold-Silver](./gold-silver.html)
 + [Chart](./chart.html)
