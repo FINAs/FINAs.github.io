@@ -38,10 +38,26 @@
         align-items: top;
         justify-content: center;
     }
+    .more_chart{
+        position: absolute;
+        list-style: none;
+        top: 10px;
+        left: 10px;
+        padding: 0;
+        margin: 0;
+    }
     </style>
 </head>
 
 <body>
+    <ul class="more_chart" >
+        <li>
+            <a href="./mc.html" target="_blank"  >Multi-chart</a>
+        </li>
+        <li>
+            <a href="./chart.html" target="_blank" >Chart</a>
+        </li>
+    </ul>
     <header>
         <!--       <iframe src="https://sslecal2.forexprostools.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=1,2,3&features=datepicker,timezone,timeselector,filters&countries=37,6,110,14,48,46,32,17,10,36,43,35,72,22,41,25,12,5,4,26,178,11,39,42&calType=day&timeZone=28&lang=1" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
         <iframe src="https://ssltsw.forexprostools.com?lang=1&forex=1,3,2,49,49799,69,68&commodities=8830,8836,8831,8833,8849,8862,8915&indices=179,172,27,23660,166,53094,178&stocks=352,350,334,345,346,347,348&tabs=2,1,3,4" width="317" height="467"></iframe>
@@ -156,7 +172,9 @@
         
     </div>
     <div class="block-big-chart">
-        <iframe  width="950" src="https://ssltvc.forexprostools.com/?pair_ID=40820&height=560&width=940&interval=900&plotStyle=candles&domain_ID=6&lang_ID=1&timezone_ID=24"></iframe> 
+        <!-- <iframe  width="950" src="https://ssltvc.forexprostools.com/?pair_ID=40820&height=560&width=940&interval=900&plotStyle=candles&domain_ID=6&lang_ID=1&timezone_ID=24"></iframe>  -->
+        <iframe width="950"  src="https://cn.investing.com/charts/advinion.php?version=6.3.1.0&domain_ID=6&lang_ID=6&timezone_ID=28&pair_ID=40820&interval=900&user=205280487&majors=new_touch_pairs_indices" >
+        </iframe>
         <iframe frameborder="0" width="800" height="580" scrolling="yes" src="https://www.jin10.com/example/jin10.com.html?fontSize=14px&theme=white"></iframe>
 <!--         <div class="tradingview-widget-container">
             <div id="tradingview_e2aaf"></div>

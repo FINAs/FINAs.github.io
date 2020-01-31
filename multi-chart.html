@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Market</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        a>b {
+        display: none;
+    }
+
+    a.myfxbookLink {
+        display: none;
+    }
+
+    iframe {
+        border: none;
+    }
+
+    [class*=block],
+    header {
+        margin: 0 auto;
+        text-align: center;
+/*        display: flex;
+        justify-content: center;
+*/    }
+    header{
+        /*display: flex;*/
+    }
+
+    header iframe {
+        display: inline-block;
+        vertical-align: top;
+    }
+    body{
+        /*max-width: 880px;*/
+        margin:0 auto;
+    }
+    .block-foundation{
+        display:flex;
+    }
+    .block-foundation>iframe{
+        width:100%;
+        height:100vh;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+    </header>
+    <div class="block-foundation">
+
+        <iframe id='chart_frame' width="100%" height="100%" >
+        </iframe>
+    </div>
+</body>
+<script>
+    var $ = document.querySelector.bind(document)
+    var frame_url = 'https://tvcharts.investing.com/init.php?&carrier=e0ecfcc68a47bcf3007bc2b9ce414e7a&time=1580213312&domain_ID=6&lang_ID=1&timezone_ID=28&pair_ID=0&interval=3600&refresh=1&session=24x7&client=1&user=205280487&width=970&height=800&init_page=layout_4&m_pids=44486,68,961728,8839&watchlist=44486,68,961728,8839,40820'
+    var $chart = $('#chart_frame') 
+    try{
+        var href = new URL(location.href)
+        var m_pids = href.searchParams.get('m_pids')||[]
+        var pidNum = m_pids.split(',').length
+        var interval = href.searchParams.get('interval')||'14400'
+        if(pidNum>0){
+            frame_url = frame_url.replace(/m_pids=[^$&]+/,'m_pids='+m_pids)
+            frame_url = frame_url.replace(/layout_[^&]+/,'layout_'+pidNum)
+        }
+        frame_url=frame_url.replace(/interval=[^&$]+/,'interval='+interval)
+        frame_url=frame_url.replace(/time=[^&$]+/,'time='+(+new Date()))
+
+    }catch(e){
+        console.error(e)
+    }
+    $chart.setAttribute('src',frame_url)
+
+</script>
+
+</html>
