@@ -7,9 +7,9 @@
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="/icon/gs.ico"/>
+    <link rel="shortcut icon" type="image/jpg" href="/icon/gs.ico" />
     <style>
-        a>b {
+    a>b {
         display: none;
     }
 
@@ -25,10 +25,12 @@
     header {
         margin: 0 auto;
         text-align: center;
-/*        display: flex;
+        /*        display: flex;
         justify-content: center;
-*/    }
-    header{
+*/
+    }
+
+    header {
         /*display: flex;*/
     }
 
@@ -36,38 +38,154 @@
         display: inline-block;
         vertical-align: top;
     }
-    body{
+
+    body {
         /*max-width: 880px;*/
-        margin:0 auto;
+        margin: 0 auto;
+        padding: 0;
     }
-    .block-foundation{
-        display:flex;
+
+    .block-data {
+        display: flex;
+        text-align: left;
     }
-    .block-foundation>iframe{
-        width:100%;
-        height:100vh;
+
+    .block-data .item {
+        display: flex;
+        justify-content: space-between;
+        width: 180px;
+        margin-right: 60px;
     }
     </style>
+    <script>
+    (function(e, t) { var n = function(t, n, r, i) { t = t || "";
+            n = n || {};
+            r = r || "";
+            i = i || function() {}; var s = function(e) { var t = []; for (var n in e) { if (e.hasOwnProperty(n)) { t.push(n) } } return t }; if (typeof n == "object") { var o = ""; var u = s(n); for (var a = 0; a < u.length; a++) { o += encodeURIComponent(u[a]) + "=" + encodeURIComponent(n[u[a]]); if (a != u.length - 1) { o += "&" } } t += "?" + o } else if (typeof n == "function") { r = n;
+                i = r } if (typeof r == "function") { i = r;
+                r = "callback" } if (!Date.now) { Date.now = function() { return (new Date).getTime() } } var f = Date.now(); var l = "jsonp" + Math.round(f + Math.random() * 1000001);
+            e[l] = function(t) { i(t);
+                delete e[l] }; if (t.indexOf("?") === -1) { t = t + "?" } else { t = t + "&" } var c = document.createElement("script");
+            c.setAttribute("src", t + r + "=" + l);
+            document.getElementsByTagName("head")[0].appendChild(c) };
+        e.JSONP = n })(window)
+    </script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
 </head>
 
 <body>
     <header>
     </header>
-    <div class="block-foundation">
-      <img src="http://webquotepic.eastmoney.com/GetPic.aspx?nid=1.000159&imageType=r&t=1" />
+    <div id="app" class="block-data">
+        <div class="left">
+            <div class="item">
+                <label>沪股通流入：</label>
+                <span class="hk2sh"><span :style="{color:hk2sh>=0?'green':'red'}">{{(hk2sh>=0?'+':'')+hk2sh}}</span>亿元</span>
+            </div>
+            <div class="item">
+                <label>深股通流入：</label>
+                <span class="hk2sz"><span :style="{color:hk2sz>=0?'green':'red'}">{{(hk2sz>=0?'+':'')+hk2sz}}</span>亿元</span>
+            </div>
+        </div>
+        <div class="right">
+            <div class="item">
+                <label>沪市成交额：</label>
+                <span>{{shTurnOver}}亿元</span>
+            </div>
+            <div class="item">
+                <label>深市成交额：</label>
+                <span>{{szTurnOver}}亿元</span>
+            </div>
+        </div>
+        <!-- <img src="http://webquotepic.eastmoney.com/GetPic.aspx?nid=1.000159&imageType=r&t=1" /> -->
     </div>
 </body>
 <script>
-	var $$=document.querySelectorAll.bind(document)
-	setInterval(function(){
-		$$image =$$('img');
-		[].slice.call($$image).map(function(img){
-			var preSrc = img.getAttribute('src')
-			var newSrc = preSrc.replace(/\&t=[^.&$]+/,('&t='+(+ new Date())))
-			img.setAttribute('src',newSrc)
-		})
-		// location.reload()
-	},10000)
-</script>
-</html>
+var $ = document.querySelector.bind(document);
+var Api = [{
+    key: 'north_flow',
+    url: 'http://push2.eastmoney.com/api/qt/kamt/get?fields1=f1,f3&fields2=f51,f52,f53,f54',
 
+}, {
+    key: 'sz_data',
+    url: 'http://push2.eastmoney.com/api/qt/stock/get?fltt=2&invt=2&secid=0.399001&fields=f57,f58,f107,f43,f169,f170,f171,f48,f60,f46,f44,f45'
+}, {
+    key: 'sh_data',
+    url: 'http://push2.eastmoney.com/api/qt/stock/get?fltt=2&invt=2&secid=1.000001&fields=f57,f58,f107,f43,f169,f170,f171,f48,f60,f46,f44,f45'
+}]
+var requestData = function(url) {
+    return new Promise(function(resolve, reject) {
+        JSONP(url, '', 'cb', function(json) {
+            if (json && json.data) {
+                resolve(json.data)
+            }
+        });
+    })
+}
+var $v = new Vue({
+    el: '#app',
+    data: {
+        north_flow: {},
+        sz_data: {
+
+        },
+        sh_data: {
+
+        }
+    },
+    computed: {
+        hk2sh() {
+            var hk2sh = this.north_flow.hk2sh
+            if (this.north_flow.hk2sh) {
+                return this.toFixed(hk2sh.dayNetAmtIn, 4)
+            }
+            return 0
+        },
+        hk2sz() {
+            var hk2sz = this.north_flow.hk2sz
+            if (this.north_flow.hk2sh) {
+                return this.toFixed(hk2sz.dayNetAmtIn, 4)
+
+            }
+            return 0
+        },
+        shTurnOver() {
+            var shTurnOver = this.sh_data.f48
+            if (shTurnOver) {
+                return this.toFixed(shTurnOver, 8)
+            }
+            return 0
+        },
+        szTurnOver() {
+            var szTurnOver = this.sz_data.f48
+            if (szTurnOver) {
+                return this.toFixed(szTurnOver, 8)
+            }
+            return 0
+        }
+    },
+    methods: {
+        toFixed(number, digit) {
+            return (number / Math.pow(10, digit)).toFixed(2)
+        },
+        updateData: function() {
+            var that = this
+            Api.map(function(api) {
+                (function(_storeApi) {
+                    requestData(_storeApi.url).then(function(result) {
+                        console.log(_storeApi.key)
+                        that[_storeApi.key] = result
+                    });
+                })(api);
+            })
+        }
+    },
+    mounted() {
+        var that = this
+        this.updateData()
+        setInterval(this.updateData, 10000)
+    }
+})
+</script>
+
+</html>
