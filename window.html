@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Window</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <style>
+    .slide-class {
+        width: 95%;
+        height: 270px;
+        display: flex;
+        margin:0 auto;
+    }
+    .panel1,.panel2{
+        display: flex;
+        text-align: center;
+        overflow: hidden;
+    }
+    .tradingview-widget-container{
+        display: inline-block;
+    }
+        body{
+            margin:0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+    </header>
+    <div class="slide-class">
+        <div class="panel1">
+                 <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div id="OANDA:USDCNH"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/OANDA-USDCNH/" rel="noopener" target="_blank"><span class="blue-text">USDCNH Chart</span></a> by TradingView</div>
+            </div>
+            <!-- TradingView Widget END -->
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div id="OANDA:CN50USD"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/OANDA-CN50USD/" rel="noopener" target="_blank"><span class="blue-text">CN50USD Chart</span></a> by TradingView</div>
+            </div>
+            <!-- TradingView Widget END -->
+           
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div id="OANDA:SPX500USD"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/CME-SP1!/" rel="noopener" target="_blank"><span class="blue-text">SP1! Chart</span></a> by TradingView</div>
+            </div>
+
+             <div class="tradingview-widget-container">
+                <div id="OANDA:JP225USD"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/CME-SP1!/" rel="noopener" target="_blank"><span class="blue-text">SP1! Chart</span></a> by TradingView</div>
+            </div>
+
+        </div>
+        <div class="panel2">
+             <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div id="OANDA:XAUUSD"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/OANDA-XAUUSD/" rel="noopener" target="_blank"><span class="blue-text">XAUUSD Chart</span></a> by TradingView</div>
+            </div>
+            <!-- TradingView Widget END -->
+             <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div id="OANDA:XAGUSD"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/OANDA-XAUUSD/" rel="noopener" target="_blank"><span class="blue-text">XAUUSD Chart</span></a> by TradingView</div>
+            </div>
+            <!-- TradingView Widget END -->
+            <div class="tradingview-widget-container">
+                <div id="OANDA:WTICOUSD"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/CME-SP1!/" rel="noopener" target="_blank"><span class="blue-text">SP1! Chart</span></a> by TradingView</div>
+            </div>
+       
+            <div class="tradingview-widget-container">
+                <div id="OANDA:EURUSD"></div>
+                <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/CME-SP1!/" rel="noopener" target="_blank"><span class="blue-text">SP1! Chart</span></a> by TradingView</div>
+            </div>        
+        </div>
+    </div>
+</body>
+<script>
+$(document).ready(function() {
+    var sliding = false
+    var lastSlideTime = +(new Date())
+    $('.slide-class').slick({
+        dots: true,
+        infinite: true,
+        speed: 100,
+        slidesToShow: 1,
+        adaptiveHeight: true
+    });
+    $('.slide-class').on('wheel', (function(e) {
+        var currentTime = +(new Date())
+        if (currentTime - lastSlideTime < 300) {
+            lastSlideTime = currentTime
+            return
+        }
+        lastSlideTime = currentTime
+
+        e.preventDefault();
+        e.stopPropagation()
+        if (e.originalEvent.deltaY < 0) {
+            $(this).slick('slickNext');
+        } else {
+            $(this).slick('slickPrev');
+        }
+    }));
+    [{symbol:'OANDA:USDCNH'},
+     {symbol:'OANDA:CN50USD'},
+     {symbol:'OANDA:SPX500USD'},
+     {symbol:'OANDA:JP225USD'},
+     {symbol:'OANDA:XAUUSD'},
+     {symbol:'OANDA:XAGUSD'},
+     {symbol:'OANDA:WTICOUSD'},
+     {symbol:'OANDA:EURUSD'}
+    ].map(function(item){
+         new TradingView.widget({
+                "width": 420,
+                "height": 290,
+                "symbol": item.symbol,
+                "interval": "120",
+                "timezone": "Asia/Shanghai",
+                "theme": "Light",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "hide_top_toolbar": true,
+                "save_image": false,
+                "container_id": item.symbol
+            });
+    });
+    $('.slide-class').slick('slickPrev')
+    setTimeout(function(){
+        $('.slide-class').slick('slickPrev')
+    },300)
+
+});
+</script>
+
+</html>

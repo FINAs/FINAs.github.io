@@ -11,6 +11,7 @@
         body{
             margin:0;
             padding: 0;
+            text-align: center;
         }
         a>b {
         display: none;
@@ -51,6 +52,10 @@
         padding: 0;
         margin: 0;
     }
+    iframe{
+        display: inline-block;
+        overflow: hidden;
+    }
     </style>
 </head>
 
@@ -73,110 +78,8 @@
     </div>
     <div class="block-tech">
     </div>
-    <div class="block-chart">
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-            <div id="tradingview_dabe1"></div>
-            <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/OANDA-USDCNH/" rel="noopener" target="_blank"><span class="blue-text">USDCNH Chart</span></a> by TradingView</div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-            new TradingView.widget({
-                "width": 430,
-                "height": 355,
-                "symbol": "OANDA:USDCNH",
-                "interval": "60",
-                "timezone": "Asia/Shanghai",
-                "theme": "Light",
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "hide_top_toolbar": true,
-                "save_image": false,
-                "container_id": "tradingview_dabe1"
-            });
-            </script>
-        </div>
-        <!-- TradingView Widget END -->
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-            <div id="tradingview_56273"></div>
-            <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/OANDA-CN50USD/" rel="noopener" target="_blank"><span class="blue-text">CN50USD Chart</span></a> by TradingView</div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-            new TradingView.widget({
-                "width": 430,
-                "height": 355,
-                "symbol": "OANDA:CN50USD",
-                "interval": "60",
-                "timezone": "Asia/Shanghai",
-                "theme": "Light",
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "hide_top_toolbar": true,
-                "save_image": false,
-                "container_id": "tradingview_56273"
-            });
-            </script>
-        </div>
-        <!-- TradingView Widget END -->
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-            <div id="tradingview_5b36c"></div>
-            <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/OANDA-XAUUSD/" rel="noopener" target="_blank"><span class="blue-text">XAUUSD Chart</span></a> by TradingView</div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-            new TradingView.widget({
-                "width": 430,
-                "height": 355,
-                "symbol": "OANDA:XAUUSD",
-                "interval": "60",
-                "timezone": "Asia/Shanghai",
-                "theme": "Light",
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "hide_top_toolbar": true,
-                "save_image": false,
-                "container_id": "tradingview_5b36c"
-            });
-            </script>
-        </div>
-        <!-- TradingView Widget END -->
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-            <div id="tradingview_19370"></div>
-            <div style="display: none" class="tradingview-widget-copyright"><a href="https://cn.tradingview.com/symbols/CME-SP1!/" rel="noopener" target="_blank"><span class="blue-text">SP1! Chart</span></a> by TradingView</div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-            new TradingView.widget({
-                "width": 430,
-                "height": 355,
-                "symbol": "OANDA:SPX500USD",
-                "interval": "60",
-                "timezone": "Asia/Shanghai",
-                "theme": "Light",
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "hide_top_toolbar": true,
-                "save_image": false,
-                "container_id": "tradingview_19370"
-            });
-            </script>
-        </div>
-        <!-- TradingView Widget END -->
-        <!--     <iframe height="355" width="430" src="https://sslcharts.forexprostools.com/index.php?force_lang=6&pair_ID=961728&timescale=900&candles=50&style=candles"></iframe>
-        <iframe height="355" width="430" src="https://sslcharts.forexprostools.com/index.php?force_lang=6&pair_ID=68&timescale=900&candles=50&style=candles"></iframe>
-        <iframe height="355" width="430" src="https://sslcharts.forexprostools.com/index.php?force_lang=6&pair_ID=3&timescale=900&candles=50&style=candles"></iframe>
-        <iframe height="560" width="940" src="https://ssltvc.forexprostools.com/?pair_ID=40820&height=560&width=940&interval=300&plotStyle=candles&domain_ID=6&lang_ID=1&timezone_ID=24"></iframe>-->
-        
-    </div>
-    <iframe src="./hgt-sgt.html" style="height:50px;width:100%;margin:0 auto" width="1000"  ></iframe>
+    <iframe src="./window.html"style="height:300px;width:99%;margin:0 auto" width="1900" ></iframe>
+    <iframe src="./hgt-sgt.html" style="height:50px;width:98%;margin:0 auto" width="1000"  ></iframe>
     <div class="block-big-chart">
         <!-- <iframe  width="950" src="https://ssltvc.forexprostools.com/?pair_ID=40820&height=560&width=940&interval=900&plotStyle=candles&domain_ID=6&lang_ID=1&timezone_ID=24"></iframe>  -->
         <iframe width="800" height="550"  src="https://cn.investing.com/charts/advinion.php?version=6.3.1.0&domain_ID=6&lang_ID=1&timezone_ID=28&pair_ID=40820&interval=60M&user=205280487&majors=new_touch_pairs_indices" >

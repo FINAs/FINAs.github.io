@@ -1,0 +1,64 @@
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.your-class{
+		width:95%;
+		height:300px;
+	}
+</style>
+<body>
+    <div class="your-class">
+        <div>12312312</div>
+        <div>2222222222222</div>
+        <div>3333333333333</div>
+    </div>
+</body>
+<script type="text/javascript">
+function debounce(func, wait = 100) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func.apply(this, args);
+        }, wait);
+    };
+}
+$(document).ready(function() {
+	var sliding = false
+	var lastSlideTime = +(new Date())
+    $('.your-class').slick({
+dots: true,
+  infinite: true,
+  speed: 100,
+  slidesToShow: 1,
+  adaptiveHeight: true
+    });
+    $('.your-class').on('wheel', (function(e) {
+       var currentTime = +(new Date())
+       if(currentTime - lastSlideTime<150){
+       	lastSlideTime =currentTime
+       	return
+       }
+       lastSlideTime = currentTime
+
+        e.preventDefault();
+        e.stopPropagation()
+        if (e.originalEvent.deltaY < 0) {
+            $(this).slick('slickNext');
+        } else {
+            $(this).slick('slickPrev');
+        }
+    }));
+});
+</script>
